@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {TextInput} from 'react-native-web';
 import {useController} from 'react-hook-form';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
 
 import {variables} from '../styles/variables';
 
@@ -10,13 +12,16 @@ const Input = ({name, control}) => {
     control,
     defaultValue: '',
     name,
+    rules: {
+      required: 'This field is required!',
+    },
   });
 
   const [isFocused, setIsFocused] = useState(false);
 
   return (
     <View style={[styles.container, isFocused ? styles.isFocused : {}]}>
-      <Text style={styles.icon}>i am icon</Text>
+      <FontAwesomeIcon icon={faSearch} style={[styles.icon]} />
       <TextInput
         onFocus={() => setIsFocused(!isFocused)}
         onBlur={() => setIsFocused(!isFocused)}
