@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
 
   text: {
     textAlign: 'center',
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: variables.mainFontSize,
+    lineHeight: variables.mainLineHeight,
     color: variables.colorWhite,
     padding: 8,
     textTransform: 'capitalize',

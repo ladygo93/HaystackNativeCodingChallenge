@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import React, {useState, createRef} from 'react';
+import {StyleSheet, View} from 'react-native';
 import {TextInput} from 'react-native-web';
 import {useController} from 'react-hook-form';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
 
 import {variables} from '../styles/variables';
 
@@ -10,14 +12,25 @@ const Input = ({name, control}) => {
     control,
     defaultValue: '',
     name,
+    rules: {
+      required: 'This field is required!',
+    },
   });
+
+  const inputRef = createRef();
 
   const [isFocused, setIsFocused] = useState(false);
 
   return (
     <View style={[styles.container, isFocused ? styles.isFocused : {}]}>
-      <Text style={styles.icon}>i am icon</Text>
+      <View style={styles.icon}>
+        <FontAwesomeIcon
+          icon={faSearch}
+          onClick={() => inputRef.current.focus()}
+        />
+      </View>
       <TextInput
+        ref={inputRef}
         onFocus={() => setIsFocused(!isFocused)}
         onBlur={() => setIsFocused(!isFocused)}
         style={styles.input}
@@ -52,8 +65,8 @@ const styles = StyleSheet.create({
 
   input: {
     flex: 1,
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: variables.mainFontSize,
+    lineHeight: variables.mainLineHeight,
     fontFamily: variables.font,
   },
 });

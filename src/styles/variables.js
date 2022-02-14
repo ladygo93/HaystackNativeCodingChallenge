@@ -12,6 +12,9 @@ const variables = {
   shadowOffset: {width: 0, height: 5},
   shadowOpacity: 0.08,
   shadowRadius: 10,
+
+  mainLineHeight: 24,
+  mainFontSize: 16,
 };
 
 export {variables};
