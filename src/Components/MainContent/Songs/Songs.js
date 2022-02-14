@@ -1,9 +1,11 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useContext} from 'react';
+import {v4 as uuidv4} from 'uuid';
 
 import {defaultState, StateContext} from '../../../Context/StateContext';
 import Song from './Song';
 import CustomBtn from '../../CustomBtn';
+
 import {variables} from '../../../styles/variables';
 
 const Songs = () => {
@@ -22,11 +24,9 @@ const Songs = () => {
             <Text style={styles.subHeading}>&apos;s top 5</Text>
           </Text>
           <View>
-            {state.songs.recordings
-              .slice(0, 5)
-              .map(({id, gen, file}, index) => (
-                <Song key={id} num={index + 1} name={gen} song={file} />
-              ))}
+            {state.songs.recordings.slice(0, 5).map(({gen, file}, index) => (
+              <Song key={uuidv4()} num={index + 1} name={gen} song={file} />
+            ))}
           </View>
         </>
       ) : (

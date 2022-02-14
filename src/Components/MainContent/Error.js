@@ -1,8 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useContext} from 'react';
 
-import CustomBtn from '../CustomBtn';
 import {StateContext, defaultState} from '../../Context/StateContext';
+import CustomBtn from '../CustomBtn';
+
 import {variables} from '../../styles/variables';
 
 const Error = () => {
